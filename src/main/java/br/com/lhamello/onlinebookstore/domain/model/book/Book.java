@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.core.style.ToStringCreator;
@@ -33,6 +35,9 @@ public class Book {
   private LocalDateTime createOn;
   @Column(name = "LAST_UPDATED")
   private LocalDateTime updatedOn;
+  @ManyToOne
+  @JoinColumn(name = "CATEGORY_ID", nullable = false)
+  private BookCategory category;
 
   @Override
   public String toString() {
